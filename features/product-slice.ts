@@ -23,14 +23,9 @@ const initialState: InitialState = {
   error: '',
 };
 
-export const fetchProducts = createAsyncThunk(
-  'product/fetchProducts',
-  (q?: string) => {
-    return axios
-      .get(`${API_BASE_URL}?q=${q ?? ''}`)
-      .then((response) => response.data);
-  }
-);
+export const fetchProducts = createAsyncThunk('product/fetchProducts', () => {
+  return axios.get(`${API_BASE_URL}`).then((response) => response.data);
+});
 
 const productSlice = createSlice({
   name: 'product',
